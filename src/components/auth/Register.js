@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../context/userContext";
-import { Alert } from "react-bootstrap";
 import { useMutation } from "react-query";
+import { Alert, Button, Form } from "react-bootstrap";
 
 import { API } from "../../config/api";
 
@@ -77,48 +77,95 @@ export default function Register() {
   });
 
   return (
-    <div className="d-flex justify-content-center">
-      <div className="card-auth p-4">
+    <div className="container mt-4">
+      <div className="row">
         <div
-          style={{ fontSize: "36px", lineHeight: "49px", fontWeight: "700" }}
-          className="mb-2"
+          style={{
+            fontSize: "36px",
+            lineHeight: "49px",
+            fontWeight: "700",
+            color: "#013059",
+          }}
+          className="mb-3 text-center"
         >
           Register
         </div>
-        {message && message}
-        <form onSubmit={(e) => handleSubmit.mutate(e)}>
-          <div className="mt-3 form">
-            <input
+        <Form.Group
+          onSubmit={(e) => handleSubmit.mutate(e)}
+          className="bg-primary p-4"
+          style={{ borderRadius: "10px" }}
+        >
+          <div className="mb-3">
+            <Form.Label
+              for="name"
+              className="form-label fw-bold"
+              style={{ color: "#013059" }}
+            >
+              Name
+            </Form.Label>
+            <Form.Control
               type="text"
               placeholder="Name"
               value={name}
               name="name"
               onChange={handleChange}
-              className="px-3 py-2"
+              className="form-control "
+              id="name"
+              aria-describedby="emailHelp"
             />
-            <input
+          </div>
+          <div className="mb-3">
+            <Form.Label
+              for="email"
+              className="form-label fw-bold"
+              style={{ color: "#013059" }}
+            >
+              Email address
+            </Form.Label>
+            <Form.Control
               type="email"
+              className="form-control "
+              id="email"
+              aria-describedby="emailHelp"
               placeholder="Email"
               value={email}
               name="email"
               onChange={handleChange}
-              className="px-3 py-2 mt-3"
             />
-            <input
+          </div>
+          <div className="mb-3">
+            <Form.Label
+              for="password"
+              className="form-label fw-bold"
+              style={{ color: "#013059" }}
+            >
+              Password
+            </Form.Label>
+            <Form.Control
               type="password"
+              className="form-control"
               placeholder="Password"
               value={password}
               name="password"
               onChange={handleChange}
-              className="px-3 py-2 mt-3"
+              id="password"
             />
           </div>
-          <div className="d-grid gap-2 mt-5">
-            <button type="submit" className="btn btn-login">
-              Register
-            </button>
-          </div>
-        </form>
+        </Form.Group>
+
+        <Button
+          type="submit"
+          className="btn mt-4"
+          style={{
+            backgroundColor: "#013059",
+            color: "white",
+            fontWeight: "bold",
+            border: "none",
+          }}
+          onClick={(e) => handleSubmit.mutate(e)}
+        >
+          Register
+        </Button>
       </div>
     </div>
   );

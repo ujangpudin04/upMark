@@ -10,7 +10,7 @@ export default function Login() {
   let navigate = useNavigate();
 
   const title = "Login";
-  document.title = "DumbMerch | " + title;
+  document.title = "BookStore | " + title;
 
   const [state, dispatch] = useContext(UserContext);
 
@@ -86,7 +86,12 @@ export default function Login() {
       <div class="row">
         <div>{message && message}</div>
         <div
-          style={{ fontSize: "36px", lineHeight: "49px", fontWeight: "700" }}
+          style={{
+            fontSize: "36px",
+            lineHeight: "49px",
+            fontWeight: "700",
+            color: "#013059",
+          }}
           className="mb-3 text-center"
         >
           Login
@@ -97,13 +102,17 @@ export default function Login() {
           style={{ borderRadius: "10px" }}
         >
           <div class="mb-3">
-            <Form.Label for="exampleInputEmail1" class="form-label">
+            <Form.Label
+              for="email"
+              class="form-label fw-bold"
+              style={{ color: "#013059" }}
+            >
               Email address
             </Form.Label>
             <Form.Control
               type="email"
-              class="form-control"
-              id="exampleInputEmail1"
+              class="form-control "
+              id="email"
               aria-describedby="emailHelp"
               placeholder="Email"
               value={email}
@@ -112,7 +121,11 @@ export default function Login() {
             />
           </div>
           <div class="mb-3">
-            <Form.Label for="exampleInputPassword1" class="form-label">
+            <Form.Label
+              for="password"
+              class="form-label fw-bold"
+              style={{ color: "#013059" }}
+            >
               Password
             </Form.Label>
             <Form.Control
@@ -122,6 +135,7 @@ export default function Login() {
               value={password}
               name="password"
               onChange={handleChange}
+              id="password"
             />
           </div>
         </Form.Group>
@@ -133,6 +147,7 @@ export default function Login() {
             backgroundColor: "#013059",
             color: "white",
             fontWeight: "bold",
+            border: "none",
           }}
           onClick={(e) => handleSubmit.mutate(e)}
         >
@@ -140,42 +155,5 @@ export default function Login() {
         </Button>
       </div>
     </div>
-    // <div className="d-flex justify-content-center">
-    //   <div className="card-auth p-4">
-    //     <div
-    //       style={{ fontSize: "36px", lineHeight: "49px", fontWeight: "700" }}
-    //       className="mb-3"
-    //     >
-    //       Login
-    //     </div>
-    //     {message && message}
-    //     <form
-    //       onSubmit={(e) => handleSubmit.mutate(e)}
-    //       className="bg-dark d-flex"
-    //     >
-    //       <div className="mt-3 form col-md-3">
-    //         <input
-    //           type="email"
-    //           placeholder="Email"
-    //           value={email}
-    //           name="email"
-    //           onChange={handleChange}
-    //           className="px-3 py-2 mt-3"
-    //         />
-    //         <input
-    //           type="password"
-    //           placeholder="Password"
-    //           value={password}
-    //           name="password"
-    //           onChange={handleChange}
-    //           className="px-3 py-2 mt-3"
-    //         />
-    //       </div>
-    //       <div className="d-grid gap-2 mt-5">
-    //         <button className="btn btn-login">Login</button>
-    //       </div>
-    //     </form>
-    //   </div>
-    // </div>
   );
 }

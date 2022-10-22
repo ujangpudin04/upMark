@@ -5,9 +5,7 @@ import { UserContext } from "./context/userContext";
 import Auth from "./pages/Auth";
 import Product from "./pages/Product";
 import DetailProduct from "./pages/DetailProduct";
-import Complain from "./pages/Complain";
 import Profile from "./pages/Profile";
-import ComplainAdmin from "./pages/ComplainAdmin";
 import CategoryAdmin from "./pages/CategoryAdmin";
 import ProductAdmin from "./pages/ProductAdmin";
 import UpdateCategoryAdmin from "./pages/UpdateCategoryAdmin";
@@ -85,7 +83,7 @@ function App() {
       <Route path="/product/:id" element={<DetailProduct />} />
       {/* <Route path="/complain" element={<Complain />} /> */}
       <Route path="/profile" element={<Profile />} />
-      <Route path="/complain-admin" element={<ComplainAdmin />} />
+      {/* <Route path="/complain-admin" element={<ComplainAdmin />} /> */}
       <Route path="/category-admin" element={<CategoryAdmin />} />
       <Route path="/update-category/:id" element={<UpdateCategoryAdmin />} />
       <Route path="/add-category" element={<AddCategoryAdmin />} />

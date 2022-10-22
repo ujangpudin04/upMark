@@ -1,25 +1,25 @@
-import { useContext, useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import Masonry from 'react-masonry-css';
-import { Container, Row, Col } from 'react-bootstrap';
+import { useContext, useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import Masonry from "react-masonry-css";
+import { Container, Row, Col } from "react-bootstrap";
 
-import { UserContext } from '../context/userContext';
-import { useQuery } from 'react-query';
+import { UserContext } from "../context/userContext";
+import { useQuery } from "react-query";
 
-import Navbar from '../components/Navbar';
-import ProductCard from '../components/card/ProductCard';
+import Navbar from "../components/Navbar";
+import ProductCard from "../components/card/ProductCard";
 
-import imgEmpty from '../assets/empty.svg';
+import imgEmpty from "../assets/empty.svg";
 
 // API config
-import { API } from '../config/api';
+import { API } from "../config/api";
 
 export default function Product() {
-  const title = 'Shop';
-  document.title = 'DumbMerch | ' + title;
+  const title = "Shop";
+  document.title = "DumbMerch | " + title;
 
-  let { data: products } = useQuery('productsCache', async () => {
-    const response = await API.get('/products');
+  let { data: products } = useQuery("productsCache", async () => {
+    const response = await API.get("/products");
     return response.data.data;
   });
 
@@ -58,7 +58,7 @@ export default function Product() {
                 <img
                   src={imgEmpty}
                   className="img-fluid"
-                  style={{ width: '40%' }}
+                  style={{ width: "40%" }}
                   alt="empty"
                 />
                 <div className="mt-3">No data product</div>
