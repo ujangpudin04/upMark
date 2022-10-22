@@ -81,7 +81,7 @@ function App() {
   return (
     <Routes>
       <Route exact path="/" element={<Product />} />
-      <Route path="/auth" element={<Auth />} />
+      <Route path="/login" element={<Auth />} />
       <Route path="/product/:id" element={<DetailProduct />} />
       {/* <Route path="/complain" element={<Complain />} /> */}
       <Route path="/profile" element={<Profile />} />
