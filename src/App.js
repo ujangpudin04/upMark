@@ -34,7 +34,7 @@ function App() {
 
     // Redirect Auth
     if (state.isLogin === false) {
-      navigate("/auth");
+      navigate("/login");
     } else {
       if (state.user.status === "admin") {
         navigate("/product-admin");
