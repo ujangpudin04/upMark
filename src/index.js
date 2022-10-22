@@ -1,14 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import { UserContextProvider } from "./context/userContext";
+
+import { QueryClient, QueryClientProvider } from "react-query";
+
+// favicon
+import Favicon from "./assets/Logo.png";
+const favicon = document.getElementById("idFavicon");
+favicon.setAttribute("href", Favicon);
+
+const client = new QueryClient();
+
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <UserContextProvider>
+      <QueryClientProvider client={client}>
+        <Router>
+          <App />
+        </Router>
+      </QueryClientProvider>
+    </UserContextProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
