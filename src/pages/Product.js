@@ -25,13 +25,6 @@ export default function Product() {
 
   console.log(products);
 
-  const breakpointColumnsObj = {
-    default: 6,
-    1100: 4,
-    700: 3,
-    500: 2,
-  };
-
   return (
     <div>
       <Navbar title={title} />
