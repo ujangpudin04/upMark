@@ -16,7 +16,7 @@ import { API } from "../config/api";
 
 export default function Product() {
   const title = "Shop";
-  document.title = "DumbMerch | " + title;
+  document.title = "BookStore | " + title;
 
   let { data: products } = useQuery("productsCache", async () => {
     const response = await API.get("/products");
@@ -41,20 +41,16 @@ export default function Product() {
             <div className="text-header-product">Product</div>
           </Col>
         </Row>
-        <Row className="my-4">
+        <Row className="my-2">
           {products?.length !== 0 ? (
-            <Masonry
-              breakpointCols={breakpointColumnsObj}
-              className="my-masonry-grid"
-              columnClassName="my-masonry-grid_column"
-            >
+            <div class="row row-cols-1 row-cols-md-4 g-2">
               {products?.map((item, index) => (
                 <ProductCard item={item} key={index} />
               ))}
-            </Masonry>
+            </div>
           ) : (
             <Col>
-              <div className="text-center pt-5">
+              <div className="text-center pt-3">
                 <img
                   src={imgEmpty}
                   className="img-fluid"

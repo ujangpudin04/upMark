@@ -81,9 +81,7 @@ function App() {
       <Route exact path="/" element={<Product />} />
       <Route path="/login" element={<Auth />} />
       <Route path="/product/:id" element={<DetailProduct />} />
-      {/* <Route path="/complain" element={<Complain />} /> */}
       <Route path="/profile" element={<Profile />} />
-      {/* <Route path="/complain-admin" element={<ComplainAdmin />} /> */}
       <Route path="/category-admin" element={<CategoryAdmin />} />
       <Route path="/update-category/:id" element={<UpdateCategoryAdmin />} />
       <Route path="/add-category" element={<AddCategoryAdmin />} />

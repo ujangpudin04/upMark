@@ -1,15 +1,14 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../../context/userContext";
+import React, { useState } from "react";
+// import { UserContext } from "../../context/userContext";
 import { useMutation } from "react-query";
 import { Alert, Button, Form } from "react-bootstrap";
 
 import { API } from "../../config/api";
+// import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const title = "Register";
-  document.title = "DumbMerch | " + title;
-
-  const [state, dispatch] = useContext(UserContext);
+  document.title = "Bookstore | " + title;
 
   const [message, setMessage] = useState(null);
   const [form, setForm] = useState({

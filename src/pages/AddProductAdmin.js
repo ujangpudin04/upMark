@@ -4,13 +4,14 @@ import { useNavigate } from "react-router";
 import { useMutation } from "react-query";
 
 import NavbarAdmin from "../components/NavbarAdmin";
-
 import { API } from "../config/api";
+import Pict from "../assets/3514981.jpg";
+// import * as yup from "yup";
 
 export default function AddProductAdmin() {
   // console.clear();
   const title = "Product admin";
-  document.title = "DumbMerch | " + title;
+  document.title = "Bookstore | " + title;
 
   let navigate = useNavigate();
 
@@ -65,10 +66,11 @@ export default function AddProductAdmin() {
     console.log(e.target.files[0].type);
 
     if (e.target.files[0].size > 102400) {
-      window.alert("file lebih dari 200KB");
+      console.log("file lebih dari 100KB");
       if (e.target.files.type !== "image/jpg") {
-        window.alert("format file harus jpg atau png");
+        console.log("format file harus jpg atau png");
       }
+      setForm((e.target.files = null));
     } else if (
       (e.target.type === "file" &&
         e.target.files[0].size <= 102400 &&
@@ -87,8 +89,6 @@ export default function AddProductAdmin() {
 
     // fileValidation();
   };
-
-  console.log(alert);
 
   const handleSubmit = useMutation(async (e) => {
     try {
@@ -130,76 +130,90 @@ export default function AddProductAdmin() {
   return (
     <>
       <NavbarAdmin title={title} />
-      <Container className="py-5">
-        <Row>
-          <Col xs="12">
-            <div className="text-header-category mb-4">Add Product</div>
+      <Container>
+        <Row className="d-flex justify-content-end">
+          <Col xs="4">
+            <div
+              className="text-header-category mb-3 text-center fw-bold"
+              style={{
+                borderBottom: "2px solid black",
+                fontSize: "20px",
+                color: "#0D8ED6",
+              }}
+            >
+              Add Product
+            </div>
           </Col>
-          <Col xs="12">
+        </Row>
+        <Row
+          className="d-flex justify-content-center"
+          style={{ textColor: "white" }}
+        >
+          <Col md="8">
+            <img src={Pict} alt="pict" style={{ width: "80%" }} />
+          </Col>
+          <Col
+            md="4"
+            style={{
+              border: "1px solid aqua",
+              borderRadius: "5px",
+              padding: "15px",
+              background: "#0D8ED6",
+              marginBottom: "10px",
+            }}
+          >
             <form onSubmit={(e) => handleSubmit.mutate(e)}>
-              {preview && (
-                <div>
-                  <img
-                    id="imagePreview"
-                    src={preview}
-                    style={{
-                      maxWidth: "150px",
-                      maxHeight: "150px",
-                      objectFit: "cover",
-                    }}
-                    alt={preview}
-                  />
-                </div>
-              )}
-              <input
-                type="file"
-                id="upload"
-                // accept="image/jpg,image/png"
-                name="image"
-                hidden
-                onChange={handleChange}
-              />
-              <label for="upload" className="label-file-add-product">
-                Upload file
-              </label>
-              <input
-                type="text"
-                placeholder="Product Name"
-                name="name"
-                onChange={handleChange}
-                className="input-edit-category mt-4"
-              />
-              <textarea
-                placeholder="Product Desc"
-                name="desc"
-                onChange={handleChange}
-                className="input-edit-category mt-4"
-                style={{ height: "130px" }}
-              ></textarea>
-              <input
-                type="number"
-                placeholder="Price (Rp.)"
-                name="price"
-                onChange={handleChange}
-                className="input-edit-category mt-4"
-              />
-              <input
-                type="number"
-                placeholder="Stock"
-                name="qty"
-                onChange={handleChange}
-                className="input-edit-category mt-4"
-              />
+              <div className="mb-3">
+                <input
+                  required
+                  type="text"
+                  placeholder="Product Name"
+                  name="name"
+                  onChange={handleChange}
+                  className="input-edit-category form-control"
+                />
+              </div>
 
-              <div className="card-form-input mt-4 px-2 py-1 pb-2">
-                <div
-                  className="text-secondary mb-1"
-                  style={{ fontSize: "15px" }}
-                >
+              <div className="mb-3">
+                <textarea
+                  placeholder="Product Desc"
+                  name="desc"
+                  onChange={handleChange}
+                  className="form-control"
+                  style={{ height: "130px" }}
+                ></textarea>
+              </div>
+
+              <div className="mb-3">
+                <input
+                  required
+                  type="number"
+                  placeholder="Price (Rp.)"
+                  name="price"
+                  onChange={handleChange}
+                  className="form-control"
+                />
+              </div>
+              <div className="mb-3">
+                <input
+                  required
+                  type="number"
+                  placeholder="Stock"
+                  name="qty"
+                  onChange={handleChange}
+                  className="form-control"
+                />
+              </div>
+
+              <div className="card-form-input px-2 py-1 pb-2">
+                <div className="mb-1 text-white" style={{ fontSize: "15px" }}>
                   Category
                 </div>
                 {categories.map((item, index) => (
-                  <label className="checkbox-inline me-4" key={index}>
+                  <label
+                    className="checkbox-inline me-4 text-white"
+                    key={index}
+                  >
                     <input
                       type="checkbox"
                       value={item.id}
@@ -208,10 +222,46 @@ export default function AddProductAdmin() {
                     {item.name}
                   </label>
                 ))}
+
+                {preview && (
+                  <div className="mt-3">
+                    <img
+                      id="imagePreview"
+                      src={preview}
+                      style={{
+                        maxWidth: "150px",
+                        maxHeight: "150px",
+                        objectFit: "cover",
+                      }}
+                      alt={preview}
+                    />
+                  </div>
+                )}
+
+                <div className="mb-3">
+                  <label for="upload" className="form-label text-white">
+                    Upload file
+                  </label>
+                  <input
+                    required
+                    type="file"
+                    id="upload"
+                    accept=".jpg,.png,.jpeg"
+                    name="image"
+                    hidden
+                    onChange={handleChange}
+                    className="form-control"
+                  />
+                </div>
               </div>
 
-              <div className="d-grid gap-2 mt-4">
-                <Button type="submit" variant="success" size="md">
+              <div className="justify-conten-end d-flex">
+                <Button
+                  type="submit"
+                  variant="success"
+                  size="md"
+                  className="col "
+                >
                   Add
                 </Button>
               </div>

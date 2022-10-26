@@ -6,13 +6,13 @@ import { useQuery, useMutation } from "react-query";
 import NavbarAdmin from "../components/NavbarAdmin";
 import CheckBox from "../components/form/CheckBox";
 
-import dataProduct from "../fakeData/product";
+// import dataProduct from "../fakeData/product";
 
 import { API } from "../config/api";
 
 export default function UpdateProductAdmin() {
   const title = "Product admin";
-  document.title = "DumbMerch | " + title;
+  document.title = "BookStore | " + title;
 
   let navigate = useNavigate();
   const { id } = useParams();
@@ -36,13 +36,10 @@ export default function UpdateProductAdmin() {
   });
 
   // Fetching category data
-  let { data: categoriesData, refetch: refetchCategories } = useQuery(
-    "categoriesCache",
-    async () => {
-      const response = await API.get("/categories");
-      return response.data.data;
-    }
-  );
+  let { data: categoriesData } = useQuery("categoriesCache", async () => {
+    const response = await API.get("/categories");
+    return response.data.data;
+  });
 
   useEffect(() => {
     if (products) {
@@ -73,7 +70,7 @@ export default function UpdateProductAdmin() {
     } else {
       // Delete category id from variable if unchecked
       let newCategoryId = categoryId.filter((categoryIdItem) => {
-        return categoryIdItem != id;
+        return categoryIdItem !== id;
       });
       setCategoryId(newCategoryId);
     }
@@ -145,20 +142,36 @@ export default function UpdateProductAdmin() {
   return (
     <>
       <NavbarAdmin title={title} />
-      <Container className="py-5">
-        <Row>
-          <Col xs="12">
-            <div className="text-header-category mb-4">Update Product</div>
-          </Col>
-          <Col xs="12">
-            <form onSubmit={(e) => handleSubmit.mutate(e)}>
+      <Container>
+        <Row className="d-flex justify-content-center ">
+          <Col
+            xs="4"
+            style={{
+              fontColor: "white",
+            }}
+          >
+            <form
+              onSubmit={(e) => handleSubmit.mutate(e)}
+              className="form-control"
+              style={{
+                border: "1px solid aqua",
+                borderRadius: "10px",
+                padding: "20px",
+                background: "#0D8ED6",
+                marginBottom: "10px",
+                color: "white",
+              }}
+            >
+              <div className="text-header-category mb-4 text-center">
+                Update Product
+              </div>
               {preview && (
-                <div>
+                <div className="form-control ">
                   <img
                     src={preview}
                     style={{
-                      maxWidth: "150px",
-                      maxHeight: "150px",
+                      maxWidth: "250px",
+                      maxHeight: "200px",
                       objectFit: "cover",
                     }}
                     alt="preview"
@@ -171,8 +184,9 @@ export default function UpdateProductAdmin() {
                 name="image"
                 hidden
                 onChange={handleChange}
+                className="form-control"
               />
-              <label for="upload" className="label-file-add-product">
+              <label for="upload" className="label-file-add-product form-label">
                 Upload file
               </label>
               <input
@@ -181,14 +195,14 @@ export default function UpdateProductAdmin() {
                 name="name"
                 onChange={handleChange}
                 value={form?.name}
-                className="input-edit-category mt-4"
+                className="input-edit-category mt-4 form-control"
               />
               <textarea
                 placeholder="Product Desc"
                 name="desc"
                 onChange={handleChange}
                 value={form?.desc}
-                className="input-edit-category mt-4"
+                className="input-edit-category mt-4 form-control"
                 style={{ height: "130px" }}
               ></textarea>
               <input
@@ -197,7 +211,7 @@ export default function UpdateProductAdmin() {
                 name="price"
                 onChange={handleChange}
                 value={form?.price}
-                className="input-edit-category mt-4"
+                className="input-edit-category mt-4 form-control"
               />
               <input
                 type="number"
@@ -205,14 +219,11 @@ export default function UpdateProductAdmin() {
                 name="qty"
                 onChange={handleChange}
                 value={form?.qty}
-                className="input-edit-category mt-4"
+                className="input-edit-category mt-4 form-control"
               />
 
               <div className="card-form-input mt-4 px-2 py-1 pb-2">
-                <div
-                  className="text-secondary mb-1"
-                  style={{ fontSize: "15px" }}
-                >
+                <div className="mb-1" style={{ fontSize: "15px" }}>
                   Category
                 </div>
                 {product &&

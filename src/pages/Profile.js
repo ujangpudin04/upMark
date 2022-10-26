@@ -6,8 +6,6 @@ import { useQuery } from "react-query";
 
 import Navbar from "../components/Navbar";
 
-import imgDumbMerch from "../assets/DumbMerch.png";
-
 import { UserContext } from "../context/userContext";
 
 import imgBlank from "../assets/blank-profile.png";
@@ -16,7 +14,7 @@ import { API } from "../config/api";
 
 export default function Profile() {
   const title = "Profile";
-  document.title = "DumbMerch | " + title;
+  document.title = "Bookstore | " + title;
 
   const [state] = useContext(UserContext);
 
@@ -39,7 +37,7 @@ export default function Profile() {
         <Row>
           <Col md="6">
             <div className="text-header-product mb-4">My Profile</div>
-            <Row>
+            <Row className="bg-primary p-3" style={{ borderRadius: "10px" }}>
               <Col md="6">
                 <img
                   src={profile?.image ? profile.image : imgBlank}
