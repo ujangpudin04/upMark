@@ -120,6 +120,8 @@ export default function Profile() {
                             className="mt-3"
                             style={{
                               fontSize: "14px",
+                              color: "#F74D4D",
+                              fontSize: "14px",
                               fontWeight: "300",
                             }}
                           >
@@ -130,6 +132,8 @@ export default function Profile() {
                             className="mt-3"
                             style={{
                               fontSize: "14px",
+                              color: "#F74D4D",
+                              fontSize: "14px",
                               fontWeight: "700",
                             }}
                           >
@@ -138,7 +142,7 @@ export default function Profile() {
                         </Col>
                         <Col xs="3">
                           <div
-                            className={`status-transaction-${item.status} rounded h-100 d-flex align-items-center justify-content-center`}
+                            className={`status-transaction-${item.status} rounded h-100 d-flex align-items-center justify-content-center text-white fw-bold`}
                           >
                             {item.status}
                           </div>
