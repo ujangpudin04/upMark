@@ -36,10 +36,13 @@ export default function UpdateProductAdmin() {
   });
 
   // Fetching category data
-  let { data: categoriesData } = useQuery("categoriesCache", async () => {
-    const response = await API.get("/categories");
-    return response.data.data;
-  });
+  let { data: categoriesData, refetch: refetchCategories } = useQuery(
+    "categoriesCache",
+    async () => {
+      const response = await API.get("/categories");
+      return response.data.data;
+    }
+  );
 
   useEffect(() => {
     if (products) {
@@ -70,7 +73,7 @@ export default function UpdateProductAdmin() {
     } else {
       // Delete category id from variable if unchecked
       let newCategoryId = categoryId.filter((categoryIdItem) => {
-        return categoryIdItem !== id;
+        return categoryIdItem != id;
       });
       setCategoryId(newCategoryId);
     }
