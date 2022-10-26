@@ -22,7 +22,7 @@ export default function NavbarAdmin(props) {
   return (
     <NavbarComp expand="lg">
       <Container>
-        <NavbarComp.Brand as={Link} to="/complain-admin">
+        <NavbarComp.Brand as={Link} to="/product-admin">
           <img
             src={Logo}
             className="img-fluid"
