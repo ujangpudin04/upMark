@@ -19,7 +19,6 @@ export default function ProductCard({ item }) {
             src={item.image}
             className="img-fluid img-rounded"
             alt={item.name}
-            style={{ width: "100px", height: "100px" }}
           />
           <div className="p-2">
             <div className="text-header-product-item">{item.name}</div>
