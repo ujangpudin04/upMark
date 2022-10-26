@@ -19,8 +19,9 @@ export default function DetailProduct() {
   useEffect(() => {
     //change this to the script source you want to load, for example this is snap.js sandbox env
     const midtransScriptUrl = "https://app.sandbox.midtrans.com/snap/snap.js";
+    const myMidtransClientKey = process.env.REACT_APP_MIDTRANS_CLIENT_KEY;
     //change this according to your client-key
-    const myMidtransClientKey = "SB-Mid-client-2zyLClg8IEU9oj-X"; // Get REACT_APP_MIDTRANS_CLIENT_KEY from ENV here ...
+    // const myMidtransClientKey = "SB-Mid-client-2zyLClg8IEU9oj-X"; // Get REACT_APP_MIDTRANS_CLIENT_KEY from ENV here ...
 
     let scriptTag = document.createElement("script");
     scriptTag.src = midtransScriptUrl;
