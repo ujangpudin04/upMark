@@ -238,7 +238,7 @@ export default function AddProductAdmin() {
                   </div>
                 )}
 
-                <div className="mb-5">
+                <div className="mb-5 mt-5">
                   <label for="upload" className="form-label text-white">
                     Upload file
                   </label>
