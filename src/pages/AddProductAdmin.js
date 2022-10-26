@@ -224,7 +224,7 @@ export default function AddProductAdmin() {
                 ))}
 
                 {preview && (
-                  <div className="mt-3">
+                  <div className="mt-3 mb-3">
                     <img
                       id="imagePreview"
                       src={preview}
@@ -238,7 +238,7 @@ export default function AddProductAdmin() {
                   </div>
                 )}
 
-                <div className="mb-3">
+                <div className="mb-5">
                   <label for="upload" className="form-label text-white">
                     Upload file
                   </label>
